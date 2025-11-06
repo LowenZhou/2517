@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>温州市艺文综合高级中学2517班</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, #1e5799 0%, #207cca 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .school-name {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .class-name {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        
+        .class-motto {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 导航栏 */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .nav-item {
+            padding: 15px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            color: #1e5799;
+            border-bottom: 3px solid #1e5799;
+        }
+        
+        /* 主要内容区 */
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        .section {
+            display: none;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #1e5799;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        /* 班级信息 */
+        .class-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .info-card {
+            background: #f9f9f9;
+            border-radius: 6px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .info-card h3 {
+            color: #1e5799;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* 公告样式 */
+        .announcement-list {
+            list-style: none;
+        }
+        
+        .announcement-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .announcement-item:last-child {
+            border-bottom: none;
+        }
+        
+        .announcement-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .announcement-date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* 相册样式 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 6px;
+            overflow: hidden;
+            height: 150px;
+            background-color: #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* 留言板样式 */
+        .message-form {
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background-color: #1e5799;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #16437e;
+        }
+        
+        .message-list {
+            list-style: none;
+        }
+        
+        .message-item {
+            background: #f9f9f9;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .message-author {
+            font-weight: bold;
+            color: #1e5799;
+        }
+        
+        .message-date {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        /* 页脚 */
+        footer {
+            background-color: #1e5799;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-item {
+                text-align: center;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            
+            .class-name {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <div class="school-name">温州市艺文综合高级中学</div>
+            <div class="class-name">2517班</div>
+            <div class="class-motto">"藝文楊威，十七助威，以藝破陣，以文爭輝"</div>
+        </div>
+    </header>
+    
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-container">
+            <div class="nav-item active" data-target="home">班级首页</div>
+            <div class="nav-item" data-target="announcements">班级公告</div>
+            <div class="nav-item" data-target="gallery">班级相册</div>
+            <div class="nav-item" data-target="messages">留言板</div>
+        </div>
+    </nav>
+    
+    <!-- 主要内容区 -->
+    <div class="container main-content">
+        <!-- 班级首页 -->
+        <section id="home" class="section active">
+            <h2 class="section-title">班级简介</h2>
+            <p>欢迎来到温州市艺文综合高级中学2517班！我们是一个充满活力、积极向上的集体，由45名同学组成。在班主任陳老师的带领下，我们团结友爱，互帮互助，共同进步。</p>
+            
+            <div style="margin: 30px 0;">
+                <h3 style="color: #1e5799; margin-bottom: 15px;">班级荣誉</h3>
+                <ul style="padding-left: 20px;">
+                    <li style="margin-bottom: 8px;">2025学年校级文明班级</li>
+                    <li style="margin-bottom: 8px;">2025年秋季运动会团体总分第二名</li>
+                    <li style="margin-bottom: 8px;"> </li>
+                </ul>
+            </div>
+            
+            <h3 style="color: #1e5799; margin-bottom: 15px;">班级信息</h3>
+            <div class="class-info-grid">
+                <div class="info-card">
+                    <h3>班主任</h3>
+                    <p>陳智老师</p>
+                </div>
+                <div class="info-card">
+                    <h3>班级人数</h3>
+                    <p>45人</p>
+                </div>
+                <div class="info-card">
+                    <h3>班级口号</h3>
+                    <p>藝文楊威，十七助威，以藝破陣，以文爭輝</p>
+                </div>
+                <div class="info-card">
+                    <h3>班干部</h3>
+                    <p>班长：吳亞潔<br>電教委员：周洛聞<br>文体委员：吳季嫻</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 班级公告 -->
+        <section id="announcements" class="section">
+            <h2 class="section-title">班级公告</h2>
+            <ul class="announcement-list">
+                <li class="announcement-item">
+                    <div class="announcement-title">关于期中考试安排的通知</div>
+                    <div class="announcement-date">2023年10月15日</div>
+                    <p>期中考试将于11月x日进行，请同学们合理安排复习时间，做好充分准备。</p>
+                </li>
+                <li class="announcement-item">
+                    <div class="announcement-title">班级团建活动通知</div>
+                    <div class="announcement-date">2023年10月10日</div>
+                    <p>本周末不将组织班级团建活动，地点为市郊生态园，请同学们不准时参加。</p>
+                </li>
+                <li class="announcement-item">
+                    <div class="announcement-title">家长会通知</div>
+                    <div class="announcement-date">2023年10月5日</div>
+                    <p>本学期家长会定于期中考後学校举行，请各位家长准时参加。</p>
+                </li>
+            </ul>
+        </section>
+        
+        <!-- 班级相册 -->
+        <section id="gallery" class="section">
+            <h2 class="section-title">班级相册</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">运动会精彩瞬间</div>
+                <div class="gallery-item">班级团建活动</div>
+                <div class="gallery-item">课堂学习剪影</div>
+                <div class="gallery-item">文艺汇演风采</div>
+                <div class="gallery-item">校园文化节</div>
+                <div class="gallery-item">班级荣誉展示</div>
+            </div>
+        </section>
+        
+        <!-- 留言板 -->
+        <section id="messages" class="section">
+            <h2 class="section-title">留言板</h2>
+            <div class="message-form">
+                <div class="form-group">
+                    <label for="author">姓名</label>
+                    <input type="text" id="author" class="form-control" placeholder="请输入您的姓名">
+                </div>
+                <div class="form-group">
+                    <label for="message">留言内容</label>
+                    <textarea id="message" class="form-control" placeholder="请输入留言内容"></textarea>
+                </div>
+                <button id="submit-message" class="btn">提交留言</button>
+            </div>
+            
+            <h3 style="color: #1e5799; margin: 30px 0 15px;">留言列表</h3>
+            <ul id="message-list" class="message-list">
+                <li class="message-item">
+                    <div class="message-header">
+                        <span class="message-author">陳老师</span>
+                        <span class="message-date">2023-10-12</span>
+                    </div>
+                    <div class="message-content">同学们最近学习状态很好，继续保持！</div>
+                </li>
+                <li class="message-item">
+                    <div class="message-header">
+                        <span class="message-author">裝逼</span>
+                        <span class="message-date">2023-10-10</span>
+                    </div>
+                    <div class="message-content">这周末有谁一起去图书馆复习？</div>
+                </li>
+            </ul>
+        </section>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>温州市艺文综合高级中学2517班 &copy; 2025 版权所有</p>
+            <p>地址：温州市鹿城區大潭村9178号 | 电话：0577-88888888</p>
+        </div>
+    </footer>
+    
+    <script>
+        // 导航切换功能
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // 移除所有导航项的active类
+                document.querySelectorAll('.nav-item').forEach(nav => {
+                    nav.classList.remove('active');
+                });
+                
+                // 添加当前导航项的active类
+                this.classList.add('active');
+                
+                // 隐藏所有内容区
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // 显示对应的内容区
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+        
+        // 留言提交功能
+        document.getElementById('submit-message').addEventListener('click', function() {
+            const author = document.getElementById('author').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!author || !message) {
+                alert('请填写姓名和留言内容！');
+                return;
+            }
+            
+            // 创建新的留言元素
+            const messageList = document.getElementById('message-list');
+            const newMessage = document.createElement('li');
+            newMessage.className = 'message-item';
+            
+            // 获取当前日期
+            const now = new Date();
+            const dateString = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')}`;
+            
+            newMessage.innerHTML = `
+                <div class="message-header">
+                    <span class="message-author">${author}</span>
+                    <span class="message-date">${dateString}</span>
+                </div>
+                <div class="message-content">${message}</div>
+            `;
+            
+            // 将新留言添加到列表顶部
+            messageList.insertBefore(newMessage, messageList.firstChild);
+            
+            // 清空表单
+            document.getElementById('author').value = '';
+            document.getElementById('message').value = '';
+            
+            alert('留言提交成功！');
+        });
+    </script>
+</body>
+</html>
