@@ -474,8 +474,9 @@
     <!-- 页脚 -->
     <footer>
         <div class="container">
-            <p>温州市艺文综合高级中学2517班 &copy; 2025 版权所有<a href="https://lowenzhou.github.io/2517/ywdm.html">阎王点卯</a></p>
+            <p>温州市艺文综合高级中学2517班 &copy; 2025 版权所有</p>
             <p>地址：温州市鹿城區大潭村9178号 | 电话：0577-88888888</p>
+            <p><a href="https://lowenzhou.github.io/2517/ywdm.html">閻王點卯</a></p>
         </div>
     </footer>
     
@@ -698,7 +699,7 @@
                 
                 messageList.innerHTML = messages.map(message => `
                     <li class="message-item" data-id="${message.id}">
-                        <button class="message-delete" onclick="messageBoard.deleteMessage(${message.id})">×</button>
+                        <!-- <button class="message-delete" onclick="messageBoard.deleteMessage(${message.id})">×</button> -->
                         <div class="message-header">
                             <span class="message-author">${this.escapeHtml(message.author)}</span>
                             <!-- <span class="message-date">${this.formatDate(message.created_at)}</span> -->
